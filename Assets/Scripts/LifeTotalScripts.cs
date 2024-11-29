@@ -17,8 +17,40 @@ public class LifeTotalScripts : MonoBehaviour
     {
         if (lifeTotal <= 0)
         {
-            // destroy the player
+            // check if the object is a monster
+            if (gameObject.tag == "Monster")
+            {
+                // add score
+                GameObject.Find("ScoreText").GetComponent<ScoreScript>().addScore();
+                // remove the monster
+                GameObject.Find("MonsterTracker").GetComponent<MonsterTrackerScript>().removeMonster();
+            }
+            if (gameObject.tag == "Player")
+            {
+                // call the PlayerLost method in the GameOverScript
+                GameObject.Find("GameOverManager").GetComponent<GameOverScript>().PlayerLost();
+
+            }
+            // destroy self
             Destroy(gameObject);
+        }
+        // check if the object is out of bounds
+        if (transform.position.y < -10)
+        {
+            if (gameObject.tag == "Monster")
+            {
+                // remove the monster
+                GameObject.Find("MonsterTracker").GetComponent<MonsterTrackerScript>().removeMonster();
+            }
+            if (gameObject.tag == "Player")
+            {
+                // call the PlayerLost method in the GameOverScript
+                GameObject.Find("GameOverManager").GetComponent<GameOverScript>().PlayerLost();
+
+            }
+            // destroy self
+            Destroy(gameObject);
+
         }
 
     }

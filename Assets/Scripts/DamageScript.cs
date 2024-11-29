@@ -25,7 +25,13 @@ public class DamageScript : MonoBehaviour
             collision.gameObject.GetComponent<LifeTotalScripts>().takeDamage(Random.Range(MinDamage, MaxDamage));
             // destroy the object
             Destroy(gameObject);
+            // if the object is a monster, remove it from the monster tracker
+            if (gameObject.tag == "Monster")
+            {
+                GameObject.Find("MonsterTracker").GetComponent<MonsterTrackerScript>().removeMonster();
+
+            }
         }
-        
+
     }
 }

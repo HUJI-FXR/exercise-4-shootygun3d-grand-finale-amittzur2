@@ -23,10 +23,12 @@ public class MonsterSpawnerScript : MonoBehaviour
             monster.SetActive(true);
 
         }
+        // add n monsters to the monster tracker
+        GameObject.Find("MonsterTracker").GetComponent<MonsterTrackerScript>().addNMonsters(numberOfMonsters);
     }
 
-        // Update is called once per frame
-        void Update()
+    // Update is called once per frame
+    void Update()
     {
         
     }
