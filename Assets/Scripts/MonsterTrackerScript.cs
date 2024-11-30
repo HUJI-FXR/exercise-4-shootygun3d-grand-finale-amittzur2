@@ -32,8 +32,6 @@ public class MonsterTrackerScript : MonoBehaviour
         {
             monsterCount = 0;
         }
-        // print debug message
-        Debug.Log("Monster count: " + monsterCount);
         if (monsterCount == 0) {
             // call the PlayerWon method in the GameOverScript
             GameObject.Find("GameOverManager").GetComponent<GameOverScript>().PlayerWon();
